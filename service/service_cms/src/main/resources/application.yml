@@ -1,0 +1,60 @@
+server:
+  port: 8004
+
+spring:
+#  redis:
+#    host: 192.168.3.130
+#    port: 6379
+#    database: 0
+#    timeout: 1800000
+#    password: 123456
+#    lettuce:
+#      pool:
+#        max-active: 20
+#        max-wait: -1
+#        max-idle: 5
+#        min-idle: 0
+
+  application:
+    name: service-cms
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置Nacos地址
+    sentinel:
+      transport:
+        #配置Sentinel dashboard地址
+        dashboard: localhost:8080
+        #默认8719端口，假如被占用会自动从8719开始依次+1扫描,直至找到未被占用的端口
+        port: 8719
+
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/guli?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: GMT+8
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true   #驼峰命名
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl   #日志
+
+#改变日志级别 注意有INFO DEBUG WARN ERROR
+#logging:
+#  level: warn
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+# 激活Sentinel对Feign的支持
+feign:
+  sentinel:
+    enabled: true

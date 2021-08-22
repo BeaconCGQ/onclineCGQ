@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cgq.eduservice.mapper.EduTeacherMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cgq.eduservice.entity.EduTeacher">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="intro" property="intro" />
+        <result column="career" property="career" />
+        <result column="level" property="level" />
+        <result column="avatar" property="avatar" />
+        <result column="sort" property="sort" />
+        <result column="is_deleted" property="isDeleted" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="gmt_modified" property="gmtModified" />
+    </resultMap>
+
+</mapper>
